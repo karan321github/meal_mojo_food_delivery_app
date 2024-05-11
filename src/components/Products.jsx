@@ -1,9 +1,29 @@
-import React from 'react'
+import { useState, useEffect } from "react";
+import axios from "axios";
+import MealItem from "./MealItem";
 
 const Products = () => {
+  const [meals, setMeals] = useState([]);
+  useEffect(() => {
+    const fetchmeals = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/meals");
+        const data = res.data;
+        console.log(res.data);
+        setMeals(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }; 
+    fetchmeals();
+  }, []);
   return (
-    <div>Products</div>
-  )
-}
+    <div id="meals">
+      {meals.map((meal) => (
+        <MealItem meal={meal}/>
+      ))}
+    </div>
+  );
+};
 
-export default Products
+export default Products;
