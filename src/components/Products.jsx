@@ -20,7 +20,7 @@ const Products = () => {
   return (
     <div id="meals">
       {meals.map((meal) => (
-        <MealItem meal={meal}/>
+        <MealItem key={meal.id} meal={meal}/>
       ))}
     </div>
   );

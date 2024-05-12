@@ -1,5 +1,6 @@
 import React from "react";
 import logoImg from '../assets/logo.jpg'
+import Button from "./ui/Button";
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
         <h1>Mojo meals</h1>
       </div>
       <nav>
-        <button>Cart(0)</button>
+        <Button>Cart(0)</Button>
       </nav>
     </header>
   );
