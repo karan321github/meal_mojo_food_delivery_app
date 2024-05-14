@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "./ui/Button";
-
+import CartContext from "../store/CartContext";
 
 const MealItem = ({ meal }) => {
-  const[cartData , setCartData] = useState([]);
-  const addToCartHandler = () => {
-    
+  const cartCtx = useContext(CartContext);
+
+  
+  function addToCartHandler() {
+    cartCtx.addItemToCart(meal);
   }
   return (
     <li className="meal-item">

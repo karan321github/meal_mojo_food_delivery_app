@@ -1,8 +1,22 @@
-import React from "react";
-import logoImg from '../assets/logo.jpg'
+import React, { useContext } from "react";
+import logoImg from "../assets/logo.jpg";
 import Button from "./ui/Button";
+import { IoFastFood } from "react-icons/io5";
+import CartContext from "../store/CartContext";
+import UserProgressContext from "../store/UserProgressContext.jsx";
 
-const Header = () => {
+export default function Header() {
+  const cartCtx = useContext(CartContext);
+  const userProgressCtx = useContext(UserProgressContext);
+
+  const totalItems = cartCtx.items.reduce(
+    (totalNumberOfItems, item) => totalNumberOfItems + item.quantity,
+    0
+  );
+
+  function onClickHandler() {
+    userProgressCtx.showCart();
+  }
   return (
     <header id="main-header">
       <div id="title">
@@ -10,10 +24,10 @@ const Header = () => {
         <h1>Mojo meals</h1>
       </div>
       <nav>
-        <Button>Cart(0)</Button>
+        <Button textOnly onClick={onClickHandler}>
+          <IoFastFood size={25} />{totalItems}
+        </Button>
       </nav>
     </header>
   );
-};
-
-export default Header;
+}

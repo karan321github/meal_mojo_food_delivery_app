@@ -9,7 +9,7 @@ const Products = () => {
       try {
         const res = await axios.get("http://localhost:3000/meals");
         const data = res.data;
-        console.log(res.data);
+        // console.log(res.data);
         setMeals(data);
       } catch (error) {
         console.log(error);
@@ -18,11 +18,11 @@ const Products = () => {
     fetchmeals();
   }, []);
   return (
-    <div id="meals">
+    <ul id="meals">
       {meals.map((meal) => (
         <MealItem key={meal.id} meal={meal}/>
       ))}
-    </div>
+    </ul>
   );
 };
 
