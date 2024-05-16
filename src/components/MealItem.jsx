@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import Button from "./ui/Button";
+import Button from "./UI/Button";
 import CartContext from "../store/CartContext";
 
 const MealItem = ({ meal }) => {

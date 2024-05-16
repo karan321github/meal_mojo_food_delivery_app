@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import logoImg from "../assets/logo.jpg";
-import Button from "./ui/Button";
+import Button from "./UI/Button.jsx";
 import { IoFastFood } from "react-icons/io5";
 import CartContext from "../store/CartContext";
 import UserProgressContext from "../store/UserProgressContext.jsx";

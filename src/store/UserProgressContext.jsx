@@ -1,41 +1,42 @@
-import { useState , createContext } from "react";
-
+import { createContext, useState } from 'react';
 
 const UserProgressContext = createContext({
-  progress: "",
+  progress: '', // 'cart', 'checkout'
   showCart: () => {},
   hideCart: () => {},
-  showCheckOut: () => {},
-  hideCheckOut: () => {},
+  showCheckout: () => {},
+  hideCheckout: () => {},
 });
 
 export function UserProgressContextProvider({ children }) {
-  const [userProgress, setUserProgress] = useState("");
+  const [userProgress, setUserProgress] = useState('');
+
   function showCart() {
-    setUserProgress("cart");
+    setUserProgress('cart');
   }
 
   function hideCart() {
     setUserProgress('');
   }
 
-  function showCheckOut() {
-    setUserProgress("checkOut");
+  function showCheckout() {
+    setUserProgress('checkout');
   }
 
-  function hideCheckOut() {
-    setUserProgress("");
+  function hideCheckout() {
+    setUserProgress('');
   }
 
-  const userProgressContext = {
+  const userProgressCtx = {
     progress: userProgress,
     showCart,
     hideCart,
-    showCheckOut,
-    hideCheckOut,
+    showCheckout,
+    hideCheckout,
   };
+  console.log(userProgressCtx);
   return (
-    <UserProgressContext.Provider value={userProgressContext}>
+    <UserProgressContext.Provider value={userProgressCtx}>
       {children}
     </UserProgressContext.Provider>
   );
