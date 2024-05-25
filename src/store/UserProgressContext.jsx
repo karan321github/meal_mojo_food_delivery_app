@@ -1,7 +1,7 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 const UserProgressContext = createContext({
-  progress: '', // 'cart', 'checkout'
+  progress: "", // 'cart', 'checkout'
   showCart: () => {},
   hideCart: () => {},
   showCheckout: () => {},
@@ -9,22 +9,30 @@ const UserProgressContext = createContext({
 });
 
 export function UserProgressContextProvider({ children }) {
-  const [userProgress, setUserProgress] = useState('');
+  const [userProgress, setUserProgress] = useState("");
 
   function showCart() {
-    setUserProgress('cart');
+    console.log("show cart is called");
+    setUserProgress("cart");
+    console.log("progress after showcart", userProgress);
   }
 
   function hideCart() {
-    setUserProgress('');
+    console.log("hide checkout is called");
+    setUserProgress("");
+    console.log("progress after hidecheckout is called", userProgress);
   }
 
   function showCheckout() {
-    setUserProgress('checkout');
+    console.log("checkout is called");
+    setUserProgress("checkout");
+    console.log("progress after showCheckOut is", userProgress);
   }
 
   function hideCheckout() {
-    setUserProgress('');
+    console.log("hideCheckout called");
+    setUserProgress("none"); // or 'cart' depending on your flow
+    console.log("Progress after hideCheckout:", userProgress);
   }
 
   const userProgressCtx = {
