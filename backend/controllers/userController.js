@@ -4,9 +4,9 @@ import jwt from "jsonwebtoken";
 
 const registerUser = async (req, res) => {
   try {
-    const { name, email, password, pic , address } = req.body;
+    const { name, email, password, pic, address } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 10);
-    if (!name || !email || !password  || !address) {
+    if (!name || !email || !password || !address) {
       res.status(400);
       throw Error("Please fill all the details");
     }
@@ -21,10 +21,10 @@ const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       pic,
-      address
+      address,
     });
 
-    const token = jwt.sign({ _id: user._id }, 'singh8750');
+    const token = jwt.sign({ _id: user._id }, "singh8750");
 
     if (user) {
       res.status(201).json({
