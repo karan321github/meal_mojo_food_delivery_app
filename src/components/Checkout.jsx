@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import Modal from "./UI/Modal.jsx";
 import CartContext from "../store/CartContext.jsx";
 import { currencyFormatter } from "../utils/currencyFormatter.js";
+import Modal from "./UI/Modal.jsx";
 import Input from "./UI/Input.jsx";
 import Button from "./UI/Button.jsx";
 import UserProgressContext from "../store/UserProgressContext.jsx";
@@ -19,15 +19,7 @@ const requestConfig = {
 export default function Checkout() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
-
-  // const {
-  //   data,
-  //   isLoading: isSending,
-  //   error,
-  //   sendRequest,
-  //   clearData,
-  // } = useHttp("http://localhost:3000/orders", requestConfig);
-
+  
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
