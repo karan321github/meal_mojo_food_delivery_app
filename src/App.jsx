@@ -7,14 +7,16 @@ import Checkout from "./components/Checkout";
 import { Route, Routes, Router } from "react-router-dom";
 import SignUp from "./components/auth/SignUp";
 import LogIn from "./components/auth/LogIn";
+import Home from "./components/Home";
 
 function App() {
   return (
     <>
       <Header />
+      <Cart />
       <Routes>
-        <Route path="/" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
