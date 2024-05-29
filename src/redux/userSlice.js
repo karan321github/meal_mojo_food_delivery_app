@@ -11,7 +11,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    signUpStart: (state, action) => {
+    signUpStart: (state) => {
       state.loading = true;
       state.error = null;
     },
@@ -22,7 +22,7 @@ export const userSlice = createSlice({
     },
     signUpFailure: (state, action) => {
       state.loading = false;
-      state.userInfo = action.payload;
+      state.error = action.payload;
     },
 
     logOut: (state) => {
@@ -33,5 +33,5 @@ export const userSlice = createSlice({
 });
 
 export const { signUpStart, signUpSuccess, signUpFailure, logOut } =
-  userSlice.reducer;
+  userSlice.actions;
 export default userSlice.reducer;
