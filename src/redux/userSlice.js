@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
 
 const initialState = {
   isLoggedIn: false,
@@ -12,16 +11,16 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    signInStart: (state, action) => {
+    signUpStart: (state, action) => {
       state.loading = true;
       state.error = null;
     },
-    signInSuccess: (state, action) => {
+    signUpSuccess: (state, action) => {
       state.isLoggedIn = true;
       state.userInfo = action.payload;
       state.loading = false;
     },
-    signInFailure: (state, action) => {
+    signUpFailure: (state, action) => {
       state.loading = false;
       state.userInfo = action.payload;
     },
@@ -33,6 +32,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { signInStart, signInSuccess, signInFailure, logOut } =
+export const { sigUpnStart, signUpSuccess, signUpFailure, logOut } =
   userSlice.reducer;
 export default userSlice.reducer;
