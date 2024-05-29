@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Lato:wght@400;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
   box-sizing: border-box;
 }
@@ -13,7 +9,7 @@ body {
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(#29251c, #2c2306);
+  background: linear-gradient(#9f9a8e, #2c2306);
   color: #d9e2f1;
   min-height: 100vh;
 }
@@ -264,3 +260,7 @@ h1 {
     transform: translateY(0);
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
