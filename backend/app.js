@@ -6,10 +6,11 @@ import fs from "node:fs/promises";
 import bodyParser from "body-parser";
 import connectDB from "./config/db.js";
 import express from "express";
-
+import cors from 'cors';
 connectDB();
 console.log(process.env) 
 const app = express();
+app.use(cors());
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
