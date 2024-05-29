@@ -8,16 +8,18 @@ import { Route, Routes, Router } from "react-router-dom";
 import SignUp from "./components/auth/SignUp";
 import LogIn from "./components/auth/LogIn";
 import Home from "./components/Home";
+import { useSelector } from "react-redux";
 
 function App() {
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
   return (
     <>
-      <Header />
+      {isLoggedIn && <Header /> }
       <Cart />
+      <Checkout />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         {/* You can add a NoMatch component for unmatched routes */}
