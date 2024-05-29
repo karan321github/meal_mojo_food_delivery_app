@@ -1,21 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { stat } from "fs";
 
 const initialState = {
-  user: "",
+  isLoggedIn: false,
+  userInfo: null,
   loading: false,
-  error: false,
+  error: null,
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    signIn: (state, action) => {
+    signInStart: (state, action) => {
       state.loading = true;
-      state.user = action.payload;
+      state.error = null;
     },
-    signOut: (state) => {
-      (state.user = ""), (state.loading = false), (state.error = false);
+    signInSuccess: (state, action) => {
+      state.isLoggedIn = true;
+      state.userInfo = action.payload;
+      state.loading = false;
+    },
+    signInFailure: (state, action) => {
+      state.loading = false;
+      state.userInfo = action.payload;
+    },
+
+    logOut: (state) => {
+      state.isLoggedIn = false;
+      state.userInfo = null;
     },
   },
 });
