@@ -1,13 +1,41 @@
 import React, { useState } from "react";
 import Input from "../UI/Input";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import {
+  signUpFailure,
+  signUpStart,
+  signUpSuccess,
+} from "../../redux/userSlice";
+import Button from "../UI/Button";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.user);
   const [formData, setFromData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
     address: "",
   });
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    dispatch(signUpStart());
+    try {
+      const res = await axios.post("http://localhost:3000/api/user/signup", {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        address: formData.address,
+      });
+      dispatch(signUpSuccess(res.data));
+    } catch (error) {
+      dispatch(
+        signUpFailure(error.response ? error.response.data : "Server error")
+      );
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,12 +45,12 @@ const SignUp = () => {
     <div className="">
       <form>
         <Input
-          label="Username"
-          id="username"
+          label="name"
+          id="name"
           placeholder="Username"
           type="text"
           onChange={handleChange}
-          value={formData.username}
+          value={formData.name}
         />
         <Input
           label="Email"
@@ -48,6 +76,11 @@ const SignUp = () => {
           onChange={handleChange}
           value={formData.address}
         />
+        <Button onClick={handleSignUp} disabled={loading}>
+          Create Account
+        </Button>
+        {loading && <p>Loading....</p>}
+        {error && <p>{error}</p>}
       </form>
     </div>
   );
