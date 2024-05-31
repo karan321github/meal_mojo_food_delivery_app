@@ -17,11 +17,13 @@ function App() {
       {isLoggedIn && <Header /> }
       <Cart />
       <Checkout />
+      <LogIn/>
+      <SignUp/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LogIn />} />
+        {/* <Route path="/signup" element={<SignUp />} /> */}
+        {/* <Route path="/login" element={<LogIn />} /> */}
         {/* You can add a NoMatch component for unmatched routes */}
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Routes>

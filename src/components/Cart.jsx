@@ -22,9 +22,7 @@ export default function Cart() {
   }
 
   function handleGoToCheckout() {
-    console.log("handle go to checkout is called");
     userProgressCtx.showCheckout();
-   
   }
 
   return (
