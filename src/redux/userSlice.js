@@ -5,6 +5,7 @@ const initialState = {
   userInfo: null,
   loading: false,
   error: null,
+  userProgress:'',
 };
 
 export const userSlice = createSlice({
