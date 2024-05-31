@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Input from "../UI/Input";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import sideImg from "../../assets/veggie-burger.jpg";
 import {
   signUpFailure,
   signUpStart,
   signUpSuccess,
 } from "../../redux/userSlice";
 import Button from "../UI/Button";
+import Modal from "../UI/Modal";
+import UserProgressContext from "../../store/UserProgressContext";
 
 const SignUp = () => {
+  const userCtx = useContext(UserProgressContext);
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.user);
   const [formData, setFromData] = useState({
@@ -42,15 +46,25 @@ const SignUp = () => {
     setFromData((prevData) => ({ ...prevData, [name]: value }));
   };
   return (
-    <div className="">
-      <form>
+    <Modal className=" max-w-md" open={userCtx.progress === "signUp"}>
+      {/* <div className="hidden m-0 lg:block w-1/2 h-full">
+          <img
+            src={sideImg}
+            alt="Presentation"
+            className="w-full h-full object-cover mx-0"
+          />
+        </div>
+        <div className=" h-screen w-0.5  ml-0 bg-slate-200" /> */}
+
+      <form className="space-y-6">
         <Input
-          label="name"
+          label="Name"
           id="name"
           placeholder="Username"
           type="text"
           onChange={handleChange}
           value={formData.name}
+          // className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
         />
         <Input
           label="Email"
@@ -59,14 +73,16 @@ const SignUp = () => {
           type="text"
           onChange={handleChange}
           value={formData.email}
+          // className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
         />
         <Input
-          label="password"
+          label="Password"
           id="password"
-          placeholder="password"
+          placeholder="Password"
           type="password"
           onChange={handleChange}
           value={formData.password}
+          // className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
         />
         <Input
           label="Address"
@@ -75,14 +91,19 @@ const SignUp = () => {
           type="text"
           onChange={handleChange}
           value={formData.address}
+          // className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
         />
-        <Button onClick={handleSignUp} disabled={loading}>
+        <Button
+          onClick={handleSignUp}
+          disabled={loading}
+          className="w-full px-4 py-3 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
           Create Account
         </Button>
-        {loading && <p>Loading....</p>}
-        {error && <p>{error}</p>}
+        {loading && <p className="text-center text-blue-500">Loading...</p>}
+        {error && <p className="text-center text-red-500">{error}</p>}
       </form>
-    </div>
+    </Modal>
   );
 };
 
