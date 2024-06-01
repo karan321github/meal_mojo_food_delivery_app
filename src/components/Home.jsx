@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div
       className="relative h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${chocolateBrownie})` }}
+      style={{ backgroundImage: `url(${margritaPizza})` }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -40,7 +40,7 @@ const Home = () => {
       {/* Main Content */}
       <div className="relative z-10 flex justify-center items-center h-full">
         <h1 className="text-3xl font-extrabold italic -mt-20 text-white">
-          mojo meals
+          mojo_meals
         </h1>
       </div>
     </div>
